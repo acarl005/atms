@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body ng-app='JPM'>
+  <div class="container" ng-controller="ATMController">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    {{hello}}
+
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src="bower_components/lodash/lodash.min.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
     <script src="javascripts/main.js"></script>
-  </body>
+  </div>
+</body>
 </html>
