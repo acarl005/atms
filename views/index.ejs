@@ -8,12 +8,25 @@
   <div class="container" ng-controller="ATMController">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    {{hello}}
 
-    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+      <ui-gmap-marker
+          idKey='100'
+          coords='map.center'
+          icon='iconMe'
+          >
+      </ui-gmap-marker>
+      <ui-gmap-marker ng-repeat="atm in atms"
+          idKey='$index'
+          coords='{latitude: atm.lat, longitude: atm.lng}'
+          icon='iconATM'
+          click='setActiveATM(atm)'
+          >
+      </ui-gmap-marker>
+    </ui-gmap-google-map>
 
     <script src="bower_components/angular/angular.min.js"></script>
-
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>

@@ -1,12 +1,19 @@
 angular.module('JPM', ['uiGmapgoogle-maps'])
 
 .controller('ATMController', function($scope, $http, Location) {
-  $scope.hello = 'heelo';
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 12 };
+  $scope.iconMe = 'images/marker.png'
+  $scope.iconATM = 'images/atm-mark.png'
+  $scope.atms = [];
+
+  $scope.setActiveATM = function(atm) {
+    alert(atm)
+  }
 
   Location.get().then(function(pos) {
-    lat = pos.coords.latitude;
-    lng = pos.coords.longitude;
+    lat = $scope.map.center.latitude = pos.coords.latitude;
+    lng = $scope.map.center.longitude = pos.coords.longitude;
     getAtms(lat, lng);
   }, function() {
     alert("Geolocation is not supported by this browser.");
@@ -18,6 +25,7 @@ angular.module('JPM', ['uiGmapgoogle-maps'])
     url += 'lng=' + lng;
     $http.get(url).then(function(res) {
       console.log(res.data);
+      $scope.atms = res.data.locations
     })
   }
 })
