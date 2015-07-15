@@ -20,7 +20,6 @@ router.get('/', function(req, res, next) {
 
   var req = https.request(options, function(data) {
     var output = '';
-    console.log(options.host + ':' + data.statusCode);
     data.setEncoding('utf8');
 
     data.on('data', function (chunk) {

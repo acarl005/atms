@@ -3,12 +3,16 @@ angular.module('JPM', ['uiGmapgoogle-maps'])
 .controller('ATMController', function($scope, $http, Location) {
 
   $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 12 };
-  $scope.iconMe = 'images/marker.png'
-  $scope.iconATM = 'images/atm-mark.png'
   $scope.atms = [];
+  $scope.activeATM = null;
 
-  $scope.setActiveATM = function(atm) {
-    alert(atm)
+  $scope.setActiveATM = function(ind) {
+    $scope.activeATM = $scope.atms[ind];
+    $scope.$apply();
+  }
+
+  $scope.removeActive = function() {
+    $scope.activeATM = null;
   }
 
   Location.get().then(function(pos) {
@@ -41,5 +45,18 @@ angular.module('JPM', ['uiGmapgoogle-maps'])
         reject();
       }
     });
+  }
+})
+
+.directive('atmView', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/atm-view.html',
+    scope: {
+      atm: '=',
+      close: '&'
+    },
+    controller: function($scope) {
+    }
   }
 })
