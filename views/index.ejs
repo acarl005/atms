@@ -5,8 +5,11 @@
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
+
 <body ng-app='JPM'>
+
   <div class="container" ng-controller="ATMController">
+
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
@@ -21,7 +24,7 @@
       </ui-gmap-marker>
       <ui-gmap-marker
           idKey='100'
-          coords='map.center'
+          coords='{latitude: lat, longitude: lng}'
           >
       </ui-gmap-marker>
     </ui-gmap-google-map>
@@ -32,7 +35,12 @@
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+
     <script src="javascripts/main.js"></script>
+    <script src="javascripts/controllers/atm-controller.js"></script>
+    <script src="javascripts/directives/atm-view.js"></script>
+    <script src="javascripts/services/location.js"></script>
+    <script src="javascripts/services/JPMAPI.js"></script>
   </div>
 </body>
 </html>
