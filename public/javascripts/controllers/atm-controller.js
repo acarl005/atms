@@ -1,9 +1,10 @@
 angular.module('JPM').controller('ATMController', function($scope, $http, Location, JPMAPI) {
 
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 12 };
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 12 };  //initialize to arbitrary values
   $scope.atms = [];
   $scope.activeATM = null;
 
+  //active ATM is the one currently showing its details
   $scope.setActiveATM = function(ind) {
     $scope.activeATM = $scope.atms[ind];
     $scope.$apply();

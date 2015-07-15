@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var https = require('https');
-var querystring = require('querystring');
 var url = require('url');
 
 router.get('/', function(req, res, next) {

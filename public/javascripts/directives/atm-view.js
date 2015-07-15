@@ -6,7 +6,5 @@ angular.module('JPM').directive('atmView', function() {
       atm: '=',
       close: '&'
     },
-    controller: function($scope) {
-    }
   }
 });
