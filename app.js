@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 
-var routes = require('./routes/main')
+var routes = require('./routes/main');
 var atms = require('./routes/atms');
 
 var app = express();
