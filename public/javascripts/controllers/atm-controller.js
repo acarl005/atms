@@ -19,7 +19,7 @@ angular.module('JPM').controller('ATMController', function($scope, $http, Locati
     $scope.lng = $scope.map.center.longitude = pos.coords.longitude;
     getAtms($scope.lat, $scope.lng);
   }, function() {
-    alert("Geolocation is not supported by this browser.");
+    alert("Geolocation is either not supported by this browser, or disabled. Please ensure Geolocation is enabled.");
   })
 
   function getAtms(lat, lng) {
