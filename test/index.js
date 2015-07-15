@@ -1,11 +1,7 @@
+var app = require('../app.js');
 var request = require('supertest');
-var express = require('express');
-var app = express();
-var atms = require('../routes/atms');
-var bodyParser = require('body-parser');
+
 var expect = require('chai').expect;
-app.use('/atms', atms);
-app.use(bodyParser.json());
 
 
 describe('GET /atms', function(){
@@ -19,6 +15,20 @@ describe('GET /atms', function(){
       expect(res.body.locations).to.be.an('array');
       expect(res.body.locations.length).to.equal(15);
       expect(res.body.locations[0].state).to.equal('OH');
+      done();
+    });
+  })
+})
+
+describe('GET /', function(){
+  it('respond with appropriate view', function(done){
+    request(app)
+    .get('/')
+    .expect('Content-Type', /html/)
+    .expect(200)
+    .end(function(err, res){
+      if (err) throw err;
+      expect(res.text).to.match(/JPM/);
       done();
     });
   })
